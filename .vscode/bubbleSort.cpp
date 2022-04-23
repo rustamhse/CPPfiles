@@ -2,6 +2,18 @@
 #include <string>
 using namespace std;
 
+void mySwap(int& a, int& b){
+    int temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+
+bool myCompare(int a, int b){
+    if (a > b) return true;
+    else return false;
+}
+
 int correct_input()
 {
   int value = 0;
@@ -27,23 +39,19 @@ void BubbleSort(int answer, int size, int a[]){
         for(i = 0; i < (size - 1); i++){
             for(j = 0; j < (size - i - 1); j++)
             {
-                if(a[j] > a[j+1])
+                if(myCompare(a[j], a[j+1]))
                 {
-                    temp = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = temp;
+                    mySwap(a[j], a[j+1]);
                 }
             }
         }
     } else if (answer == 1){
-        for(i = 1; i < size; i++){
-            for(j = 0; j < size - i; j++)
+        for(i = 0; i < (size - 1); i++){
+            for(j = 0; j < (size - i - 1); j++)
             {
-                if(a[j]<a[j+1])
+                if(!myCompare(a[j], a[j+1]))
                 {
-                    temp = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = temp;
+                    mySwap(a[j], a[j+1]);
                 }
             }
         }
